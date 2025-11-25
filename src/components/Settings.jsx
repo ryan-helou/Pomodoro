@@ -65,8 +65,16 @@ const Settings = ({ settings, onUpdateWorkColor, onUpdateBreakColor, onToggleSou
 
       {/* Settings Panel */}
       {isOpen && (
-        <div className="fixed inset-0 flex items-center justify-center p-4 z-50" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
-          <div className="bg-gray-800 rounded-2xl p-8 max-w-sm w-full max-h-[90vh] overflow-y-auto space-y-6" style={{ maxHeight: 'calc(100vh - 32px)' }}>
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 z-40"
+            style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
+            onClick={() => setIsOpen(false)}
+          />
+          {/* Settings Sidebar */}
+          <div className="fixed right-0 top-0 h-full w-96 bg-gray-800 shadow-2xl z-50 overflow-y-auto p-8 space-y-6" style={{ maxHeight: '100vh' }}>
+            <div />
             {/* Header */}
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold text-white">Settings</h2>
@@ -211,7 +219,7 @@ const Settings = ({ settings, onUpdateWorkColor, onUpdateBreakColor, onToggleSou
               Done
             </button>
           </div>
-        </div>
+        </>
       )}
     </>
   )
