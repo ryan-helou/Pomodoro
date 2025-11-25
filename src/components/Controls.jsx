@@ -8,6 +8,7 @@ const Controls = ({
   onResume,
   onReset,
   onSetDuration,
+  backgroundColors,
 }) => {
   const [showPresets, setShowPresets] = useState(true)
   const [showCustomDialog, setShowCustomDialog] = useState(false)
@@ -74,6 +75,7 @@ const Controls = ({
         <CustomTimeDialog
           onSetCustom={onSetDuration}
           onClose={() => setShowCustomDialog(false)}
+          backgroundColors={backgroundColors}
         />
       )}
     </div>
