@@ -52,21 +52,19 @@ const Controls = ({
             <button
               key={preset.key}
               onClick={() => onSetDuration(preset.key)}
-              className="btn-secondary bg-white/80 text-gray-900 hover:bg-white shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95 py-4 px-3 font-semibold"
+              className="btn-secondary bg-white/80 text-gray-900 hover:bg-white shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95 py-3 px-3 font-semibold"
               title={preset.name}
             >
-              <div className="font-bold text-base">{preset.name}</div>
-              <div className="text-gray-700 text-sm mt-2">{preset.label}</div>
+              <div className="text-base">{preset.label}</div>
             </button>
           ))}
 
           {/* Custom Time Button in Grid */}
           <button
             onClick={() => setShowCustomDialog(true)}
-            className="btn-secondary bg-white/80 text-gray-900 hover:bg-white shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95 py-4 px-3 font-semibold"
+            className="btn-secondary bg-white/80 text-gray-900 hover:bg-white shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95 py-3 px-3 font-semibold"
           >
-            <div className="font-bold text-base">⚙️ Custom</div>
-            <div className="text-gray-700 text-sm mt-2">Time</div>
+            <div className="text-base">Custom</div>
           </button>
         </div>
       </div>
