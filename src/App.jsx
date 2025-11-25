@@ -112,6 +112,7 @@ function App() {
               onResume={resume}
               onReset={reset}
               onSetDuration={setDuration}
+              backgroundColors={backgroundColors}
             />
           </div>
         </div>
