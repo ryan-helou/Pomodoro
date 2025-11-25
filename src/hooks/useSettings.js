@@ -13,7 +13,16 @@ export const useSettings = () => {
   const [settings, setSettings] = useState(() => {
     // Load from localStorage on initialization
     const saved = localStorage.getItem('pomodoroSettings')
-    return saved ? JSON.parse(saved) : DEFAULT_SETTINGS
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved)
+        // Merge with defaults to ensure all properties exist
+        return { ...DEFAULT_SETTINGS, ...parsed }
+      } catch {
+        return DEFAULT_SETTINGS
+      }
+    }
+    return DEFAULT_SETTINGS
   })
 
   // Persist settings to localStorage whenever they change
@@ -46,7 +55,7 @@ export const useSettings = () => {
   }
 
   const resetToDefaults = () => {
-    setSettings(DEFAULT_SETTINGS)
+    setSettings({ ...DEFAULT_SETTINGS })
   }
 
   return {

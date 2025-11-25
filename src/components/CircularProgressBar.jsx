@@ -49,12 +49,11 @@ const CircularProgressBar = ({ timeLeft, totalTime, currentSession, customColor 
     // Create torus geometry - larger radius for bigger circle
     const torusGeometry = new THREE.TorusGeometry(1.5, 0.15, 32, 64)
 
-    // Custom shader material for glow and progress
+    // Custom shader material for progress arc
     const material = new THREE.ShaderMaterial({
       uniforms: {
         uColor: { value: new THREE.Color(customColor) },
-        uProgress: { value: 0 },
-        uTime: { value: 0 }
+        uProgress: { value: 0 }
       },
       vertexShader: `
         varying vec3 vPosition;
@@ -72,7 +71,6 @@ const CircularProgressBar = ({ timeLeft, totalTime, currentSession, customColor 
 
         uniform vec3 uColor;
         uniform float uProgress;
-        uniform float uTime;
 
         void main() {
           // Calculate angle from position (0 to 2π)
@@ -80,22 +78,22 @@ const CircularProgressBar = ({ timeLeft, totalTime, currentSession, customColor 
           float normalizedAngle = angle / 6.28318530718; // 0 to 1
 
           // Progress fill (start from top, go clockwise)
+          // FIXED: Use fixed starting point instead of rotating angle
           float adjustedProgress = uProgress / 100.0;
-          float startAngle = 1.5 - (adjustedProgress * 6.28318530718);
-          float fillArea = mod(normalizedAngle - startAngle + 6.28318530718, 1.0);
-          float progressFill = step(fillArea, adjustedProgress);
+          float fillAngle = mod(normalizedAngle + 0.25, 1.0); // Start at top
+          float progressFill = step(fillAngle, adjustedProgress);
 
-          // Glow effect based on normal
+          // Subtle glow based on normal direction
           vec3 normal = normalize(vNormal);
-          float glow = pow(max(0.0, dot(normal, vec3(0.0, 0.0, 1.0))), 2.0);
+          float rimLight = pow(max(0.0, 1.0 - dot(normal, vec3(0.0, 0.0, 1.0))), 3.0);
 
-          // Pulse animation
-          float pulse = 0.5 + 0.5 * sin(uTime * 2.0);
-          float intensity = 0.6 + 0.4 * glow + pulse * glow * 0.3;
+          // Smooth intensity based on progress fill
+          float intensity = mix(0.3, 1.0, progressFill);
+          intensity += rimLight * 0.5;
 
-          // Combine color and alpha
+          // Color with custom color input
           vec3 finalColor = uColor * intensity;
-          float alpha = progressFill * (0.8 + 0.2 * glow);
+          float alpha = progressFill * 0.3;
 
           gl_FragColor = vec4(finalColor, alpha);
         }
@@ -109,11 +107,30 @@ const CircularProgressBar = ({ timeLeft, totalTime, currentSession, customColor 
     torusRef.current = torus
     materialRef.current = material
 
-    // Add background ring
-    const backMaterial = new THREE.MeshBasicMaterial({
-      color: 0xffffff,
-      opacity: 0.12,
-      transparent: true
+    // Add background ring with shader for subtle effect
+    const backMaterial = new THREE.ShaderMaterial({
+      uniforms: {
+        uColor: { value: new THREE.Color(customColor) }
+      },
+      vertexShader: `
+        varying vec3 vPosition;
+
+        void main() {
+          vPosition = position;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        varying vec3 vPosition;
+        uniform vec3 uColor;
+
+        void main() {
+          vec3 finalColor = uColor * 0.15;
+          gl_FragColor = vec4(finalColor, 0.15);
+        }
+      `,
+      transparent: true,
+      side: THREE.DoubleSide
     })
     const backTorus = new THREE.Mesh(torusGeometry, backMaterial)
     scene.add(backTorus)
@@ -130,20 +147,14 @@ const CircularProgressBar = ({ timeLeft, totalTime, currentSession, customColor 
     const animate = () => {
       rafRef.current = requestAnimationFrame(animate)
 
-      const elapsed = clockRef.current.getElapsedTime()
-
       // Smooth progress interpolation
       const diff = targetProgressRef.current - progressRef.current
       progressRef.current += diff * 0.08
 
-      // Update shader uniforms
+      // Update shader uniforms - only progress and color, no time
       material.uniforms.uProgress.value = progressRef.current
-      material.uniforms.uTime.value = elapsed
       material.uniforms.uColor.value.setStyle(customColor)
-
-      // Gentle rotation
-      torus.rotation.z += 0.0005
-      backTorus.rotation.z -= 0.0002
+      backMaterial.uniforms.uColor.value.setStyle(customColor)
 
       renderer.render(scene, camera)
     }

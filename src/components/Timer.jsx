@@ -37,8 +37,9 @@ const Timer = ({ timeLeft, currentSession, customColor, totalTime }) => {
 
         {/* Countdown Display - Perfectly Centered */}
         <div
-          className="absolute text-9xl font-bold tracking-wider text-white z-10 flex items-center justify-center"
+          className="absolute font-bold tracking-wider text-white z-10 flex items-center justify-center"
           style={{
+            fontSize: '7.5rem',
             width: '100%',
             height: '100%'
           }}
@@ -50,6 +51,7 @@ const Timer = ({ timeLeft, currentSession, customColor, totalTime }) => {
             containerRef={containerRef}
             radius={100}
             falloff="linear"
+            style={{ fontSize: '8.5rem' }}
           />
         </div>
       </div>
