@@ -82,6 +82,7 @@ function App() {
           onUpdateWorkBackgroundColors={updateWorkBackgroundColors}
           onUpdateBreakBackgroundColors={updateBreakBackgroundColors}
           onReset={resetToDefaults}
+          backgroundColors={backgroundColors}
         />
 
         <div className="flex flex-col items-center justify-center flex-1 px-6 pt-20">

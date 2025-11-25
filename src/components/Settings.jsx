@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const Settings = ({ settings, onUpdateWorkColor, onUpdateBreakColor, onToggleSound, onToggleNotifications, onUpdateWorkBackgroundColors, onUpdateBreakBackgroundColors, onReset }) => {
+const Settings = ({ settings, onUpdateWorkColor, onUpdateBreakColor, onToggleSound, onToggleNotifications, onUpdateWorkBackgroundColors, onUpdateBreakBackgroundColors, onReset, backgroundColors }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const colors = [
@@ -73,7 +73,15 @@ const Settings = ({ settings, onUpdateWorkColor, onUpdateBreakColor, onToggleSou
             onClick={() => setIsOpen(false)}
           />
           {/* Settings Sidebar */}
-          <div className="fixed right-0 top-0 h-full w-96 bg-gray-800 shadow-2xl z-50 overflow-y-auto p-8 space-y-6" style={{ maxHeight: '100vh' }}>
+          <div
+            className="fixed right-0 top-0 h-full w-96 shadow-2xl z-50 overflow-y-auto p-8 space-y-6"
+            style={{
+              maxHeight: '100vh',
+              background: backgroundColors && backgroundColors.length > 0
+                ? `linear-gradient(135deg, ${backgroundColors[0]} 0%, ${backgroundColors[1] || backgroundColors[0]} 50%, ${backgroundColors[2] || backgroundColors[0]} 100%)`
+                : '#1f2937'
+            }}
+          >
             <div />
             {/* Header */}
             <div className="flex items-center justify-between">
