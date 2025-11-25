@@ -99,6 +99,7 @@ function App() {
               totalTime={totalTime}
               currentSession={currentSession}
               customColor={sessionColor}
+              backgroundColors={backgroundColors}
             />
           </div>
 
@@ -114,15 +115,6 @@ function App() {
             />
           </div>
 
-          {/* Stats Section */}
-          <div className="mt-auto mb-8 text-center">
-            <div className="flex items-center justify-center gap-3">
-              <span className="text-gray-400 text-sm font-medium">Sessions</span>
-              <span className="bg-gradient-to-r from-blue-300 to-emerald-300 bg-clip-text text-transparent font-bold text-4xl">
-                {completedPomodoros}
-              </span>
-            </div>
-          </div>
         </div>
       </div>
     </div>

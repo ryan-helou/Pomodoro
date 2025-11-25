@@ -20,18 +20,18 @@ const Controls = ({
   return (
     <div className="space-y-12">
       {/* Main Controls */}
-      <div className="flex gap-6 justify-center">
+      <div className="flex gap-4 justify-center">
         {!isRunning ? (
           <button
             onClick={onStart}
-            className="btn-primary bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-xl hover:shadow-blue-500/60 hover:from-blue-600 hover:to-blue-700 px-8 py-4 text-lg"
+            className="btn-primary bg-white/80 text-gray-900 shadow-lg hover:bg-white hover:shadow-white/40 px-6 py-2 text-base font-semibold"
           >
             ▶ Start
           </button>
         ) : (
           <button
             onClick={onPause}
-            className="btn-primary bg-gradient-to-r from-yellow-500 to-yellow-600 text-white shadow-xl hover:shadow-yellow-500/60 hover:from-yellow-600 hover:to-yellow-700 px-8 py-4 text-lg"
+            className="btn-primary bg-white/80 text-gray-900 shadow-lg hover:bg-white hover:shadow-white/40 px-6 py-2 text-base font-semibold"
           >
             ⏸ Pause
           </button>
@@ -39,7 +39,7 @@ const Controls = ({
 
         <button
           onClick={onReset}
-          className="btn-secondary bg-gradient-to-r from-gray-600 to-gray-700 text-white shadow-xl hover:from-gray-700 hover:to-gray-800 hover:shadow-gray-600/60 px-8 py-4 text-lg"
+          className="btn-secondary bg-white/80 text-gray-900 shadow-lg hover:bg-white hover:shadow-white/40 px-6 py-2 text-base font-semibold"
         >
           ↻ Reset
         </button>
@@ -52,21 +52,21 @@ const Controls = ({
             <button
               key={preset.key}
               onClick={() => onSetDuration(preset.key)}
-              className="btn-secondary bg-gradient-to-br from-gray-700 to-gray-800 text-gray-100 hover:from-gray-600 hover:to-gray-700 shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95 py-4 px-3"
+              className="btn-secondary bg-white/80 text-gray-900 hover:bg-white shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95 py-4 px-3 font-semibold"
               title={preset.name}
             >
               <div className="font-bold text-base">{preset.name}</div>
-              <div className="text-gray-400 text-sm mt-2">{preset.label}</div>
+              <div className="text-gray-700 text-sm mt-2">{preset.label}</div>
             </button>
           ))}
 
           {/* Custom Time Button in Grid */}
           <button
             onClick={() => setShowCustomDialog(true)}
-            className="btn-secondary bg-gradient-to-br from-gray-700 to-gray-800 text-gray-100 hover:from-gray-600 hover:to-gray-700 shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95 py-4 px-3"
+            className="btn-secondary bg-white/80 text-gray-900 hover:bg-white shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95 py-4 px-3 font-semibold"
           >
             <div className="font-bold text-base">⚙️ Custom</div>
-            <div className="text-gray-400 text-sm mt-2">Time</div>
+            <div className="text-gray-700 text-sm mt-2">Time</div>
           </button>
         </div>
       </div>

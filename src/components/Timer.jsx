@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import VariableProximity from './VariableProximity'
 import CircularProgressBar from './CircularProgressBar'
 
-const Timer = ({ timeLeft, currentSession, customColor, totalTime }) => {
+const Timer = ({ timeLeft, currentSession, customColor, totalTime, backgroundColors }) => {
   const containerRef = useRef(null)
 
   // Format time as MM:SS
@@ -15,6 +15,9 @@ const Timer = ({ timeLeft, currentSession, customColor, totalTime }) => {
   const displayTime = formatTime(timeLeft)
 
   const isWorkSession = currentSession === 'work'
+
+  // Use first background color for the circular progress bar
+  const circleColor = backgroundColors && backgroundColors[0] ? backgroundColors[0] : customColor
 
   return (
     <div className="text-center flex flex-col items-center justify-center w-full relative" ref={containerRef}>
@@ -32,7 +35,7 @@ const Timer = ({ timeLeft, currentSession, customColor, totalTime }) => {
           timeLeft={timeLeft}
           totalTime={totalTime}
           currentSession={currentSession}
-          customColor={customColor}
+          customColor={circleColor}
         />
 
         {/* Countdown Display - Perfectly Centered */}
@@ -56,11 +59,6 @@ const Timer = ({ timeLeft, currentSession, customColor, totalTime }) => {
         </div>
       </div>
 
-      {/* Animated Indicator Dots */}
-      <div className="flex justify-center items-center gap-3 mt-8">
-        <div className="h-4 w-4 rounded-full transition-all duration-500 animate-pulse bg-white" />
-        <div className="h-2 w-2 rounded-full transition-all duration-500 opacity-60 bg-white" />
-      </div>
     </div>
   )
 }
