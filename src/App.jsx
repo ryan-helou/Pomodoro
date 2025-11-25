@@ -72,7 +72,7 @@ function App() {
         />
       </div>
 
-      <div className="relative z-20 flex items-center justify-center w-full h-full overflow-hidden">
+      <div className="relative z-20 flex flex-col items-center justify-center w-full h-full overflow-hidden">
         <Settings
           settings={settings}
           onUpdateWorkColor={updateWorkColor}
@@ -84,7 +84,7 @@ function App() {
           onReset={resetToDefaults}
         />
 
-        <div className="flex flex-col items-center justify-center h-full px-6">
+        <div className="flex flex-col items-center justify-center flex-1 px-6">
           {/* Session Label */}
           <div className="text-center mb-8">
             <p className="text-2xl font-light tracking-widest uppercase opacity-60 text-white">
@@ -114,7 +114,13 @@ function App() {
               onSetDuration={setDuration}
             />
           </div>
+        </div>
 
+        {/* Footer */}
+        <div className="py-4 px-6 text-center">
+          <p className="text-sm text-gray-400 opacity-60">
+            Developed by Ryan Helou
+          </p>
         </div>
       </div>
     </div>
