@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import Timer from './components/Timer'
 import Controls from './components/Controls'
-import ProgressAnimation from './components/ProgressAnimation'
 import Settings from './components/Settings'
 import ColorBends from './components/ColorBends'
 import { useTimer } from './hooks/useTimer'
@@ -93,20 +92,11 @@ function App() {
             </p>
           </div>
 
-          {/* Progress Bar */}
-          <div className="mb-16 w-full max-w-sm">
-            <ProgressAnimation
-              timeLeft={timeLeft}
-              totalTime={totalTime}
-              currentSession={currentSession}
-              customColor={sessionColor}
-            />
-          </div>
-
-          {/* Timer Display */}
+          {/* Timer Display with Circular Progress */}
           <div className="mb-20">
             <Timer
               timeLeft={timeLeft}
+              totalTime={totalTime}
               currentSession={currentSession}
               customColor={sessionColor}
             />
