@@ -84,7 +84,7 @@ function App() {
           onReset={resetToDefaults}
         />
 
-        <div className="flex flex-col items-center justify-center flex-1 px-6">
+        <div className="flex flex-col items-center justify-center flex-1 px-6 pt-20">
           {/* Session Label */}
           <div className="text-center mb-8">
             <p className="text-2xl font-light tracking-widest uppercase opacity-60 text-white">
