@@ -5,7 +5,9 @@
       "Bash(npm install:*)",
       "Bash(npx tailwindcss init -p)",
       "Bash(npx -y tailwindcss init -p)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
