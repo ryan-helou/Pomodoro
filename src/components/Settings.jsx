@@ -3,6 +3,16 @@ import { useState } from 'react'
 const Settings = ({ settings, onUpdateWorkColor, onUpdateBreakColor, onToggleSound, onToggleNotifications, onUpdateWorkBackgroundColors, onUpdateBreakBackgroundColors, onReset, backgroundColors }) => {
   const [isOpen, setIsOpen] = useState(false)
 
+  // Darken hex color by a percentage (0-100)
+  const darkenColor = (hex, percent = 40) => {
+    const num = parseInt(hex.replace('#', ''), 16)
+    const amt = Math.round(2.55 * percent)
+    const R = Math.max(0, (num >> 16) - amt)
+    const G = Math.max(0, (num >> 8 & 0x00FF) - amt)
+    const B = Math.max(0, (num & 0x0000FF) - amt)
+    return '#' + (0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1)
+  }
+
   const colors = [
     { name: 'Blue', value: '#3b82f6' },
     { name: 'Red', value: '#ef4444' },
@@ -77,8 +87,8 @@ const Settings = ({ settings, onUpdateWorkColor, onUpdateBreakColor, onToggleSou
             className="fixed right-0 top-0 h-full w-96 shadow-2xl z-50 overflow-y-auto p-8 space-y-6"
             style={{
               maxHeight: '100vh',
-              background: backgroundColors && backgroundColors.length > 0
-                ? `linear-gradient(135deg, ${backgroundColors[0]} 0%, ${backgroundColors[1] || backgroundColors[0]} 50%, ${backgroundColors[2] || backgroundColors[0]} 100%)`
+              backgroundColor: backgroundColors && backgroundColors.length > 0
+                ? darkenColor(backgroundColors[0], 50)
                 : '#1f2937'
             }}
           >
