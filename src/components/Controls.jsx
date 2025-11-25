@@ -18,7 +18,7 @@ const Controls = ({
   ]
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-6">
       {/* Main Controls */}
       <div className="flex gap-4 justify-center">
         {!isRunning ? (
@@ -46,7 +46,7 @@ const Controls = ({
       </div>
 
       {/* Preset Selector */}
-      <div className="space-y-6">
+      <div className="space-y-4">
         <div className="grid grid-cols-3 gap-4">
           {presets.map((preset) => (
             <button
@@ -64,7 +64,7 @@ const Controls = ({
             onClick={() => setShowCustomDialog(true)}
             className="btn-secondary bg-white/80 text-gray-900 hover:bg-white shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95 py-3 px-3 font-semibold"
           >
-            <div className="text-base">Custom</div>
+            <div className="text-base">Custom ⚙️</div>
           </button>
         </div>
       </div>
