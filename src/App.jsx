@@ -6,6 +6,7 @@ import ColorBends from './components/ColorBends'
 import { useTimer } from './hooks/useTimer'
 import { useSettings } from './hooks/useSettings'
 import { useNotifications } from './hooks/useNotifications'
+import { useDocumentTitle } from './hooks/useDocumentTitle'
 
 function App() {
   const {
@@ -38,6 +39,9 @@ function App() {
     reset,
     setDuration,
   } = useTimer(settings)
+
+  // Update browser tab title with countdown
+  useDocumentTitle(timeLeft, isRunning, currentSession)
 
   // Determine colors based on session and settings
   const isWorkSession = currentSession === 'work'
