@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 const Settings = ({ settings, onUpdateWorkColor, onUpdateBreakColor, onToggleSound, onToggleNotifications, onUpdateWorkBackgroundColors, onUpdateBreakBackgroundColors, onReset, backgroundColors }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const isMobile = useIsMobile()
 
   // Darken hex color by a percentage (0-100)
   const darkenColor = (hex, percent = 40) => {
@@ -49,7 +51,7 @@ const Settings = ({ settings, onUpdateWorkColor, onUpdateBreakColor, onToggleSou
       {/* Settings Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-6 right-6 p-3 rounded-full bg-gray-800 text-gray-300 hover:bg-gray-700 transition-colors"
+        className="fixed top-4 right-4 md:top-6 md:right-6 p-2.5 md:p-3 rounded-full bg-gray-800 text-gray-300 hover:bg-gray-700 active:bg-gray-600 transition-colors z-40"
         title="Settings"
       >
         <svg
@@ -84,9 +86,13 @@ const Settings = ({ settings, onUpdateWorkColor, onUpdateBreakColor, onToggleSou
           />
           {/* Settings Sidebar */}
           <div
-            className="fixed right-0 top-0 h-full w-96 shadow-2xl z-50 overflow-y-auto p-8 space-y-6"
+            className={`fixed shadow-2xl z-50 overflow-y-auto space-y-6 ${
+              isMobile
+                ? 'inset-0 w-full h-full p-6 rounded-none'
+                : 'right-0 top-0 h-full w-96 p-8'
+            }`}
             style={{
-              maxHeight: '100vh',
+              maxHeight: isMobile ? '100vh' : '100vh',
               backgroundColor: backgroundColors && backgroundColors.length > 0
                 ? darkenColor(backgroundColors[0], 50)
                 : '#1f2937'
@@ -113,7 +119,7 @@ const Settings = ({ settings, onUpdateWorkColor, onUpdateBreakColor, onToggleSou
                 {[0, 1, 2].map((index) => (
                   <div key={`work-bg-${index}`} className="space-y-1">
                     <p className="text-xs text-gray-500">Color {index + 1}</p>
-                    <div className="grid grid-cols-5 gap-2">
+                    <div className="grid grid-cols-4 md:grid-cols-5 gap-2">
                       {backgroundColorPalette.map((color) => (
                         <button
                           key={color.value}
@@ -122,10 +128,10 @@ const Settings = ({ settings, onUpdateWorkColor, onUpdateBreakColor, onToggleSou
                             newColors[index] = color.value
                             onUpdateWorkBackgroundColors(newColors)
                           }}
-                          className={`h-8 rounded-lg transition-all ${
+                          className={`h-10 md:h-8 rounded-lg transition-all ${
                             settings.workBackgroundColors[index] === color.value
                               ? 'ring-2 ring-white scale-110'
-                              : 'hover:scale-105'
+                              : 'active:scale-95 md:hover:scale-105'
                           }`}
                           style={{ backgroundColor: color.value }}
                           title={color.name}
@@ -146,7 +152,7 @@ const Settings = ({ settings, onUpdateWorkColor, onUpdateBreakColor, onToggleSou
                 {[0, 1, 2].map((index) => (
                   <div key={`break-bg-${index}`} className="space-y-1">
                     <p className="text-xs text-gray-500">Color {index + 1}</p>
-                    <div className="grid grid-cols-5 gap-2">
+                    <div className="grid grid-cols-4 md:grid-cols-5 gap-2">
                       {backgroundColorPalette.map((color) => (
                         <button
                           key={color.value}
@@ -155,10 +161,10 @@ const Settings = ({ settings, onUpdateWorkColor, onUpdateBreakColor, onToggleSou
                             newColors[index] = color.value
                             onUpdateBreakBackgroundColors(newColors)
                           }}
-                          className={`h-8 rounded-lg transition-all ${
+                          className={`h-10 md:h-8 rounded-lg transition-all ${
                             settings.breakBackgroundColors[index] === color.value
                               ? 'ring-2 ring-white scale-110'
-                              : 'hover:scale-105'
+                              : 'active:scale-95 md:hover:scale-105'
                           }`}
                           style={{ backgroundColor: color.value }}
                           title={color.name}

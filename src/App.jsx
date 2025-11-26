@@ -89,16 +89,16 @@ function App() {
           backgroundColors={backgroundColors}
         />
 
-        <div className="flex flex-col items-center justify-center flex-1 px-6 pt-20">
+        <div className="flex flex-col items-center justify-center flex-1 px-4 md:px-6 pt-16 md:pt-20">
           {/* Session Label */}
-          <div className="text-center mb-8">
-            <p className="text-2xl font-light tracking-widest uppercase opacity-60 text-white">
+          <div className="text-center mb-4 md:mb-8">
+            <p className="text-xl md:text-2xl font-light tracking-widest uppercase opacity-60 text-white">
               {sessionLabel}
             </p>
           </div>
 
           {/* Timer Display with Circular Progress */}
-          <div className="mb-20">
+          <div className="mb-8 md:mb-20">
             <Timer
               timeLeft={timeLeft}
               totalTime={totalTime}
@@ -109,7 +109,7 @@ function App() {
           </div>
 
           {/* Controls */}
-          <div className="w-full max-w-sm">
+          <div className="w-full max-w-sm px-2 md:px-0">
             <Controls
               isRunning={isRunning}
               onStart={start}
@@ -123,8 +123,8 @@ function App() {
         </div>
 
         {/* Footer */}
-        <div className="py-4 px-6 text-center">
-          <p className="text-sm text-gray-400 opacity-60">
+        <div className="py-3 md:py-4 px-4 md:px-6 text-center">
+          <p className="text-xs md:text-sm text-gray-400 opacity-60">
             Developed by Ryan Helou
           </p>
         </div>
