@@ -7,7 +7,10 @@
       "Bash(npx -y tailwindcss init -p)",
       "Bash(npm run dev:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git reset:*)",
+      "Bash(git pull:*)",
+      "Bash(npx tsc:*)"
     ],
     "deny": [],
     "ask": []
