@@ -1,16 +1,53 @@
-# React + Vite
+# ⏱️ Pomodoro Timer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean, minimal, and customizable Pomodoro timer built with React + Vite.
+Designed to help you stay focused with an elegant UI and smooth animations.
 
-Currently, two official plugins are available:
+## Live Demo
+https://pomodoro-eta-dusky.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🎯 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Work & Break Cycles
+Choose between presets like **25/5**, **15/3**, or create your **custom cycle**.
 
-## Expanding the ESLint configuration
+### Animated Background
+Smooth, dynamic color waves that adapt to Work or Break mode.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Full Customization
+Change the Work & Break background colors directly from the settings menu.
+
+### Sound Alerts
+Optional audio signals when a session ends.
+
+### Browser Notifications
+Enables desktop notifications so you never miss a cycle switch.
+
+### Minimal UI
+Clean layout, centered timer, simple controls.
+
+---
+
+## 🚀 Tech Stack
+
+### Frontend
+- React
+- Vite
+- Tailwind CSS
+- Framer Motion (if used)
+
+### Deployment
+- Vercel
+
+---
+## 👨‍💻 Developer
+
+Developed by **Ryan Helou**
+
+---
+
+## LICENSE
+
+Add a license (e.g., MIT) in a LICENSE file if you plan to open-source this project.
