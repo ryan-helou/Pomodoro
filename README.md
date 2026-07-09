@@ -1,6 +1,8 @@
-# Pomodoro
+# 🍅 Pomodoro
 
 *A single-screen focus timer with a WebGL gradient behind the clock.*
+
+![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black) ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white) ![Three.js](https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=threedotjs&logoColor=white)
 
 A personal Pomodoro timer I built to actually enjoy looking at while I work. It counts down a work session, switches to a break, and loops, tracking how many pomodoros you've finished. Three presets ship in: Pomodoro (25/5), Short (15/3), and a keyboard-only Quick (5/1) on the `3` key. A custom dialog lets you dial work and break anywhere from 1 to 120 minutes. Spacebar pauses and resumes; `1` and `2` jump to the first two presets.
 
