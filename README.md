@@ -1,6 +1,14 @@
+<div align="center">
+
 # Pomodoro
 
-A focus timer that alternates between work time and short breaks, with a colourful moving background.
+**A focus timer that alternates between work time and short breaks, with a colourful moving background.**
+
+<a href="https://pomodoro-eta-dusky.vercel.app"><img alt="Open pomodoro-eta-dusky.vercel.app" src="https://img.shields.io/badge/Open-pomodoro--eta--dusky.vercel.app-24292f?style=for-the-badge"></a>
+
+</div>
+
+<br>
 
 The Pomodoro technique is a simple way to stay focused: work for a set time (often 25 minutes), take a short break, and repeat. This timer handles the switching for you and counts how many work sessions you have finished. I built it because I wanted a timer that was pleasant to look at while working.
 
@@ -12,7 +20,3 @@ The Pomodoro technique is a simple way to stay focused: work for a set time (oft
 - Pick your own colours for work and break time.
 - Turn on a sound or a browser notification when a session ends (both are off by default).
 - See how many work sessions you have completed.
-
-## Try it
-
-https://pomodoro-eta-dusky.vercel.app
