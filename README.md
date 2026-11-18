@@ -1,13 +1,18 @@
-# 🍅 Pomodoro
+# Pomodoro
 
-*A single-screen focus timer with a WebGL gradient behind the clock.*
+A focus timer that alternates between work time and short breaks, with a colourful moving background.
 
-![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black) ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white) ![Three.js](https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=threedotjs&logoColor=white)
+The Pomodoro technique is a simple way to stay focused: work for a set time (often 25 minutes), take a short break, and repeat. This timer handles the switching for you and counts how many work sessions you have finished. I built it because I wanted a timer that was pleasant to look at while working.
 
-A personal Pomodoro timer I built to actually enjoy looking at while I work. It counts down a work session, switches to a break, and loops, tracking how many pomodoros you've finished. Three presets ship in: Pomodoro (25/5), Short (15/3), and a keyboard-only Quick (5/1) on the `3` key. A custom dialog lets you dial work and break anywhere from 1 to 120 minutes. Spacebar pauses and resumes; `1` and `2` jump to the first two presets.
+## What you can do with it
 
-The visuals are the point. The background is `ColorBends`, a full-screen Three.js shader that warps a set of gradient colors, rotates them, and drifts toward your cursor. The countdown sits inside a `CircularProgressBar` — a shaded torus, also Three.js, whose lit arc shrinks as time runs out. The digits themselves use `VariableProximity`, so each glyph's font weight swells from 400 toward 900 as the pointer nears it.
+- Start a 25-minute work / 5-minute break cycle, or a shorter 15/3 cycle.
+- Set your own work and break lengths, anywhere from 1 to 120 minutes.
+- Pause and resume with the spacebar, and switch timers with the number keys.
+- Pick your own colours for work and break time.
+- Turn on a sound or a browser notification when a session ends (both are off by default).
+- See how many work sessions you have completed.
 
-Work and break each have their own accent color and three-stop gradient (work defaults to a pink/violet/teal blend, break to greens and cyan). Those choices, plus the sound and notification toggles, persist to `localStorage`; the timer durations reset on reload. Session-end sounds are synthesized with the Web Audio API — a double high beep leaving work, a lower one leaving break — and both sound and browser notifications are off until you turn them on.
+## Try it
 
-Built with React 19, Vite, Tailwind, and Three.js. Live at https://pomodoro-eta-dusky.vercel.app/.
+https://pomodoro-eta-dusky.vercel.app
