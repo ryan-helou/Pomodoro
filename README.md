@@ -6,6 +6,8 @@
 
 <a href="https://pomodoro-eta-dusky.vercel.app"><img alt="Open pomodoro-eta-dusky.vercel.app" src="https://img.shields.io/badge/Open-pomodoro--eta--dusky.vercel.app-24292f?style=for-the-badge"></a>
 
+<!-- facts --><img alt="Presets: 25/5 or 15/3" src="https://img.shields.io/badge/Presets-25%2F5_or_15%2F3-24292f?style=for-the-badge"> <img alt="Custom: 1 to 120 min" src="https://img.shields.io/badge/Custom-1_to_120_min-24292f?style=for-the-badge"> <img alt="Shortcuts: space, number keys" src="https://img.shields.io/badge/Shortcuts-space,_number_keys-24292f?style=for-the-badge">
+
 </div>
 
 <br>
